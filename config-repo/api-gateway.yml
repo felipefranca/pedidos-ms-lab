@@ -1,0 +1,8 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway,prometheus
+  metrics:
+    tags:
+      application: api-gateway

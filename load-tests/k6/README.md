@@ -1,0 +1,132 @@
+# Projeto de Teste de Carga com k6
+
+Este modulo adiciona ao monorepo uma base simples e pratica para teste de carga usando k6.
+
+Pasta:
+
+- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6`](C:\code_environment\workspace\pedidos-ms\load-tests\k6)
+
+## Objetivo
+
+Testar o fluxo principal exposto pelo gateway:
+
+- cadastro/login
+- criacao de pedido
+- listagem de pedidos
+
+A ideia aqui e estudar carga no mesmo fluxo que voce ja esta aprendendo funcionalmente.
+
+## Estrutura
+
+- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\smoke.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\smoke.js)
+- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\auth-orders-load.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\auth-orders-load.js)
+- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\config.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\config.js)
+- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\helpers.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\helpers.js)
+
+## Como funciona
+
+### `smoke.js`
+
+Teste bem pequeno para validar que o ambiente esta respondendo:
+
+- cria usuario de teste
+- faz login
+- cria pedido
+- lista pedidos
+
+Use esse script antes do teste de carga real.
+
+### `auth-orders-load.js`
+
+Teste de carga gradual usando `ramping-vus`.
+
+Cada VU:
+
+- autentica uma vez
+- reaproveita seu token
+- cria pedidos
+- lista pedidos
+
+## Variaveis uteis
+
+- `BASE_URL` padrao: `http://localhost:8080`
+- `TEST_PASSWORD` padrao: `pedidos123!`
+- `VUS`
+- `ITERATIONS`
+- `START_VUS`
+- `STAGE1_DURATION`
+- `STAGE1_TARGET`
+- `STAGE2_DURATION`
+- `STAGE2_TARGET`
+- `STAGE3_DURATION`
+- `STAGE3_TARGET`
+- `SLEEP_SECONDS`
+
+## Rodar com k6 instalado localmente
+
+### Smoke test
+
+```powershell
+cd C:\code_environment\workspace\pedidos-ms
+k6 run .\load-tests\k6\scripts\smoke.js
+```
+
+### Carga gradual
+
+```powershell
+cd C:\code_environment\workspace\pedidos-ms
+k6 run .\load-tests\k6\scripts\auth-orders-load.js
+```
+
+### Exemplo com parametrizacao
+
+```powershell
+cd C:\code_environment\workspace\pedidos-ms
+$env:BASE_URL='http://localhost:8080'
+$env:STAGE1_TARGET='10'
+$env:STAGE2_TARGET='25'
+$env:SLEEP_SECONDS='0.5'
+k6 run .\load-tests\k6\scripts\auth-orders-load.js
+```
+
+## Rodar com Docker sem instalar k6
+
+```powershell
+docker run --rm -i --network host -v "C:\code_environment\workspace\pedidos-ms:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/smoke.js
+```
+
+Se `--network host` nao funcionar bem no seu Docker Desktop, use o gateway exposto no host mesmo e ajuste `BASE_URL` para `http://host.docker.internal:8080`.
+
+Exemplo:
+
+```powershell
+docker run --rm -i -e BASE_URL=http://host.docker.internal:8080 -v "C:\code_environment\workspace\pedidos-ms:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/auth-orders-load.js
+```
+
+## O que observar nos resultados
+
+Campos mais importantes do k6:
+
+- `http_req_duration`: tempo das requisicoes
+- `http_req_failed`: taxa de erro
+- `p(95)`: comportamento de cauda mais importante que media simples
+- `iterations` e `vus`: volume real gerado
+
+## Sequencia recomendada de estudo
+
+1. Suba o ambiente com Docker Compose.
+2. Rode `smoke.js`.
+3. Rode um teste de carga pequeno.
+4. Observe Grafana, Prometheus e logs.
+5. Aumente a carga gradualmente.
+6. Compare comportamento com 1 instancia e depois com servicos escalados.
+
+## Observacao importante
+
+Esse projeto e voltado para estudo e baseline funcional. Para maturidade maior, os proximos passos naturais seriam:
+
+- cenarios separados por endpoint
+- thresholds por grupo
+- tags e dashboards dedicados
+- execucao via CI performance job
+- testes com taxa constante e modelos mais proximos de producao

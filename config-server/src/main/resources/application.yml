@@ -1,0 +1,19 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: optional:file:./config-repo,optional:file:/app/config-repo,optional:file:../config-repo,optional:file:C:/code_environment/workspace/pedidos-ms/config-repo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
