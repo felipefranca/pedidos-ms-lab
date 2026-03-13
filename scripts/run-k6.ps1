@@ -3,11 +3,15 @@ param(
     [string]$BaseUrl = 'http://localhost:8080'
 )
 
-$root = 'C:\code_environment\workspace\pedidos-ms'
+$root = Resolve-Path (Join-Path $PSScriptRoot '..')
 $scriptPath = switch ($Scenario) {
-    'smoke' { '.\load-tests\k6\scripts\smoke.js' }
-    'load' { '.\load-tests\k6\scripts\auth-orders-load.js' }
+    'smoke' { Join-Path $root 'load-tests\k6\scripts\smoke.js' }
+    'load' { Join-Path $root 'load-tests\k6\scripts\auth-orders-load.js' }
     default { throw "Cenario invalido: $Scenario. Use 'smoke' ou 'load'." }
+}
+
+if (-not (Get-Command k6 -ErrorAction SilentlyContinue)) {
+    throw 'k6 nao encontrado no PATH. Instale o k6 ou use a execucao via Docker descrita em load-tests/k6/README.md.'
 }
 
 $env:BASE_URL = $BaseUrl

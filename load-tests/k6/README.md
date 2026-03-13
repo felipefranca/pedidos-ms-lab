@@ -64,14 +64,14 @@ Cada VU:
 
 ## Rodar com k6 instalado localmente
 
-### Smoke test
+### Smoke test no PowerShell
 
 ```powershell
 cd <repo-root>
 k6 run ./load-tests/k6/scripts/smoke.js
 ```
 
-### Carga gradual
+### Carga gradual no PowerShell
 
 ```powershell
 cd <repo-root>
@@ -87,6 +87,40 @@ $env:STAGE1_TARGET='10'
 $env:STAGE2_TARGET='25'
 $env:SLEEP_SECONDS='0.5'
 k6 run ./load-tests/k6/scripts/auth-orders-load.js
+```
+
+### Smoke test no Bash, Git Bash ou WSL
+
+```bash
+cd <repo-root>
+k6 run ./load-tests/k6/scripts/smoke.js
+```
+
+### Carga gradual no Bash, Git Bash ou WSL
+
+```bash
+cd <repo-root>
+export BASE_URL='http://localhost:8080'
+export STAGE1_TARGET='10'
+export STAGE2_TARGET='25'
+export SLEEP_SECONDS='0.5'
+k6 run ./load-tests/k6/scripts/auth-orders-load.js
+```
+
+### Runners prontos do projeto
+
+PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario smoke
+powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario load
+```
+
+Bash:
+
+```bash
+bash ./scripts/run-k6.sh --scenario smoke
+bash ./scripts/run-k6.sh --scenario load
 ```
 
 ## Rodar com Docker sem instalar k6

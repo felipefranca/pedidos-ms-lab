@@ -104,11 +104,20 @@ mvn test
 powershell -ExecutionPolicy Bypass -File ./scripts/up-and-test.ps1 -Rebuild -KeepRunning
 ```
 
+```bash
+bash ./scripts/up-and-test.sh --rebuild --keep-running
+```
+
 ### Teste de carga com k6
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario smoke
 powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario load
+```
+
+```bash
+bash ./scripts/run-k6.sh --scenario smoke
+bash ./scripts/run-k6.sh --scenario load
 ```
 
 ## Guia de Estudo
