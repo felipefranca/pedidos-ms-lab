@@ -53,6 +53,24 @@ function Invoke-WithRetry {
     }
 }
 
+function Try-RecoverKafka {
+    $kafka = docker compose ps -a --format json | ConvertFrom-Json | Where-Object { $_.Service -eq 'kafka' }
+    if (-not $kafka -or $kafka.State -ne 'exited') {
+        return $false
+    }
+
+    $logs = docker compose logs kafka --tail 120 2>&1 | Out-String
+    if ($logs -notmatch 'NodeExistsException') {
+        return $false
+    }
+
+    Write-Step 'Detectado conflito de registro do Kafka no Zookeeper. Tentando recuperacao automatica'
+    docker compose restart zookeeper kafka | Out-Null
+    Start-Sleep -Seconds 10
+    docker compose up -d kafka-ui notification-service order-service api-gateway web prometheus grafana | Out-Null
+    return $true
+}
+
 Set-Location $PSScriptRoot\..
 
 $composeArgs = @('compose', 'up', '-d')
@@ -61,11 +79,19 @@ if ($Rebuild) {
 }
 
 Write-Step 'Subindo ambiente Docker Compose'
-docker @composeArgs
+try {
+    docker @composeArgs
+}
+catch {
+    if (-not (Try-RecoverKafka)) {
+        throw
+    }
+}
 
 Write-Step 'Esperando endpoints principais'
 Wait-ForUrl 'http://localhost:8888/actuator/health' | Out-Null
 Wait-ForUrl 'http://localhost:8761' | Out-Null
+Wait-ForUrl 'http://localhost:9080' | Out-Null
 Wait-ForUrl 'http://localhost:8081/actuator/health' | Out-Null
 Wait-ForUrl 'http://localhost:8082/actuator/health' | Out-Null
 Wait-ForUrl 'http://localhost:8083/actuator/health' | Out-Null

@@ -41,6 +41,39 @@ write_step() {
   printf '\n==> %s\n' "$1"
 }
 
+recover_kafka_if_needed() {
+  local kafka_state
+  kafka_state="$(docker compose ps -a --format json 2>/dev/null | "${PYTHON_BIN}" - <<'PY'
+import json
+import sys
+
+items = json.load(sys.stdin)
+if isinstance(items, dict):
+    items = [items]
+
+for item in items:
+    if item.get("Service") == "kafka":
+        print(item.get("State", ""))
+        break
+PY
+)"
+
+  if [[ "$kafka_state" != "exited" ]]; then
+    return 0
+  fi
+
+  local kafka_logs
+  kafka_logs="$(docker compose logs kafka --tail 120 2>&1 || true)"
+  if [[ "$kafka_logs" != *"NodeExistsException"* ]]; then
+    return 0
+  fi
+
+  write_step "Detectado conflito de registro do Kafka no Zookeeper. Tentando recuperacao automatica"
+  docker compose restart zookeeper kafka
+  sleep 10
+  docker compose up -d kafka-ui notification-service order-service api-gateway web prometheus grafana
+}
+
 json_get() {
   local file_path="$1"
   local key="$2"
@@ -193,11 +226,14 @@ if [[ "$REBUILD" == "true" ]]; then
 fi
 
 write_step "Subindo ambiente Docker Compose"
-docker "${COMPOSE_ARGS[@]}"
+if ! docker "${COMPOSE_ARGS[@]}"; then
+  recover_kafka_if_needed
+fi
 
 write_step "Esperando endpoints principais"
 wait_for_url "http://localhost:8888/actuator/health"
 wait_for_url "http://localhost:8761"
+wait_for_url "http://localhost:9080"
 wait_for_url "http://localhost:8081/actuator/health"
 wait_for_url "http://localhost:8082/actuator/health"
 wait_for_url "http://localhost:8083/actuator/health"
