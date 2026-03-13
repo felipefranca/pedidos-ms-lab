@@ -4,6 +4,7 @@ set -euo pipefail
 
 REBUILD=false
 KEEP_RUNNING=false
+BASE_URL="http://localhost:8080"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -15,103 +16,23 @@ while [[ $# -gt 0 ]]; do
       KEEP_RUNNING=true
       shift
       ;;
+    --base-url)
+      BASE_URL="$2"
+      shift 2
+      ;;
     *)
       echo "Argumento invalido: $1" >&2
-      echo "Uso: ./scripts/up-and-test.sh [--rebuild] [--keep-running]" >&2
+      echo "Uso: ./scripts/up-and-test.sh [--rebuild] [--keep-running] [--base-url http://localhost:8080]" >&2
       exit 1
       ;;
   esac
 done
 
-PYTHON_BIN="$(command -v python3 || command -v python || true)"
-if [[ -z "${PYTHON_BIN}" ]]; then
-  echo "python3/python nao encontrado. Este script usa Python apenas para ler JSON das respostas HTTP." >&2
-  exit 1
-fi
-
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "${TMP_DIR}"' EXIT
-
-STATUS_CODE=""
-RESPONSE_BODY=""
 
 write_step() {
   printf '\n==> %s\n' "$1"
-}
-
-json_get() {
-  local file_path="$1"
-  local key="$2"
-  "${PYTHON_BIN}" - "$file_path" "$key" <<'PY'
-import json
-import sys
-
-file_path, key = sys.argv[1], sys.argv[2]
-with open(file_path, encoding="utf-8") as fh:
-    data = json.load(fh)
-
-value = data
-for part in key.split("."):
-    if isinstance(value, dict):
-        value = value.get(part)
-    else:
-        value = None
-        break
-
-if value is None:
-    sys.exit(1)
-
-if isinstance(value, (dict, list)):
-    print(json.dumps(value))
-else:
-    print(value)
-PY
-}
-
-json_len() {
-  local file_path="$1"
-  "${PYTHON_BIN}" - "$file_path" <<'PY'
-import json
-import sys
-
-with open(sys.argv[1], encoding="utf-8") as fh:
-    data = json.load(fh)
-
-print(len(data))
-PY
-}
-
-request() {
-  local method="$1"
-  local url="$2"
-  local data="${3:-}"
-  local token="${4:-}"
-  local output_file="${TMP_DIR}/response.json"
-
-  local curl_args=(
-    -sS
-    -o "$output_file"
-    -w "%{http_code}"
-    -X "$method"
-    -H "Accept: application/json"
-  )
-
-  if [[ "$method" != "GET" ]]; then
-    curl_args+=(-H "Content-Type: application/json")
-  fi
-
-  if [[ -n "$token" ]]; then
-    curl_args+=(-H "Authorization: Bearer ${token}")
-  fi
-
-  if [[ -n "$data" ]]; then
-    curl_args+=(--data "$data")
-  fi
-
-  STATUS_CODE="$(curl "${curl_args[@]}" "$url")"
-  RESPONSE_BODY="$output_file"
 }
 
 wait_for_url() {
@@ -138,51 +59,33 @@ wait_for_url() {
 
 assert_healthy() {
   local url="$1"
-  request GET "$url"
   local status
-  status="$(json_get "$RESPONSE_BODY" "status")"
+  status="$(curl -fsS "$url" | sed -n 's/.*"status":"\([^"]*\)".*/\1/p')"
   if [[ "$status" != "UP" ]]; then
     echo "Healthcheck falhou em $url" >&2
     exit 1
   fi
 }
 
-retry_request() {
-  local attempts="$1"
-  shift
-  local delay_seconds="${1:-5}"
-  shift
+run_k6_smoke() {
+  if command -v k6 >/dev/null 2>&1; then
+    BASE_URL="$BASE_URL" k6 run "${REPO_ROOT}/load-tests/k6/scripts/smoke.js"
+    return 0
+  fi
 
-  local attempt
-  for (( attempt=1; attempt<=attempts; attempt++ )); do
-    if "$@"; then
-      return 0
-    fi
-    if (( attempt == attempts )); then
-      return 1
-    fi
-    sleep "$delay_seconds"
-  done
-}
+  local mount_root="$REPO_ROOT"
+  case "$(uname -s)" in
+    MINGW*|MSYS*|CYGWIN*)
+      if command -v cygpath >/dev/null 2>&1; then
+        mount_root="$(cygpath -w "$REPO_ROOT")"
+      fi
+      ;;
+  esac
 
-register_user() {
-  request POST "http://localhost:8080/api/auth/register" "$REGISTER_BODY"
-  [[ "$STATUS_CODE" == "201" || "$STATUS_CODE" == "200" ]]
-}
-
-login_user() {
-  request POST "http://localhost:8080/api/auth/login" "$LOGIN_BODY"
-  [[ "$STATUS_CODE" == "200" ]]
-}
-
-create_order() {
-  request POST "http://localhost:8080/api/orders" "$ORDER_BODY" "$TOKEN"
-  [[ "$STATUS_CODE" == "201" || "$STATUS_CODE" == "200" ]]
-}
-
-list_orders() {
-  request GET "http://localhost:8080/api/orders" "" "$TOKEN"
-  [[ "$STATUS_CODE" == "200" ]]
+  docker run --rm \
+    -e BASE_URL="$BASE_URL" \
+    -v "${mount_root}:/workspace" \
+    grafana/k6 run /workspace/load-tests/k6/scripts/smoke.js
 }
 
 cd "$REPO_ROOT"
@@ -211,40 +114,13 @@ assert_healthy "http://localhost:8082/actuator/health"
 assert_healthy "http://localhost:8083/actuator/health"
 assert_healthy "http://localhost:8080/actuator/health"
 
-STAMP="$(date +%Y%m%d%H%M%S)"
-EMAIL="codex.${STAMP}@playground.local"
-PASSWORD="123456"
-
-REGISTER_BODY=$(cat <<JSON
-{"name":"Automation User","email":"${EMAIL}","password":"${PASSWORD}"}
-JSON
-)
-
-LOGIN_BODY=$(cat <<JSON
-{"email":"${EMAIL}","password":"${PASSWORD}"}
-JSON
-)
-
-ORDER_BODY='{"itemName":"Pedido Automacao","amount":199.90}'
-
-write_step "Executando fluxo funcional via gateway"
-retry_request 20 5 register_user || { echo "Falha ao registrar usuario." >&2; exit 1; }
-retry_request 20 5 login_user || { echo "Falha ao autenticar usuario." >&2; exit 1; }
-TOKEN="$(json_get "$RESPONSE_BODY" "accessToken")"
-TOKEN_TYPE="$(json_get "$RESPONSE_BODY" "tokenType")"
-
-retry_request 20 5 create_order || { echo "Falha ao criar pedido." >&2; exit 1; }
-ORDER_ID="$(json_get "$RESPONSE_BODY" "id")"
-
-retry_request 20 5 list_orders || { echo "Falha ao listar pedidos." >&2; exit 1; }
-ORDERS_COUNT="$(json_len "$RESPONSE_BODY")"
+write_step "Executando smoke funcional via k6"
+run_k6_smoke
 
 write_step "Resumo da validacao"
 cat <<EOF
-Email: ${EMAIL}
-TokenType: ${TOKEN_TYPE}
-OrderId: ${ORDER_ID}
-OrdersCount: ${ORDERS_COUNT}
+BaseUrl: ${BASE_URL}
+SmokeRunner: k6
 SwaggerAuth: http://localhost:8081/swagger-ui/index.html
 SwaggerOrders: http://localhost:8082/swagger-ui/index.html
 KafkaUi: http://localhost:9080

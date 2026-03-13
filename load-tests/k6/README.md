@@ -146,6 +146,16 @@ Campos mais importantes do k6:
 - `p(95)`: comportamento de cauda mais importante que media simples
 - `iterations` e `vus`: volume real gerado
 
+## Observacao sobre pratica de mercado
+
+Para automacao em shell/Linux, o mercado costuma seguir um destes caminhos:
+
+- `curl + jq` para smoke scripts simples
+- `k6`, `newman` ou outra ferramenta dedicada para smoke e carga
+- testes de integracao na propria stack da aplicacao, por exemplo `RestAssured`, `pytest` ou equivalentes
+
+Neste projeto, o smoke funcional do script Bash foi ajustado para usar `k6`, o que deixa a automacao mais portavel e evita depender de Python so para ler JSON.
+
 ## Sequencia recomendada de estudo
 
 1. Suba o ambiente com Docker Compose.

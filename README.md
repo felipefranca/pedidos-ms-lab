@@ -110,6 +110,10 @@ powershell -ExecutionPolicy Bypass -File ./scripts/up-and-test.ps1 -Rebuild -Kee
 bash ./scripts/up-and-test.sh --rebuild --keep-running
 ```
 
+Observacao:
+- no Bash, o smoke funcional agora usa `k6` diretamente, ou via container `grafana/k6` se o binario local nao estiver instalado
+- isso evita depender de Python para parsing de JSON no shell
+
 ### Teste de carga com k6
 
 ```powershell
