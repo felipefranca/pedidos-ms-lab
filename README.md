@@ -15,6 +15,7 @@ Este monorepo implementa um sistema de pedidos com autenticacao e arquitetura de
 - `apps/web` com frontend em Next.js
 - observabilidade com Prometheus e Grafana
 - testes de carga com k6
+- Kafka em modo KRaft, sem ZooKeeper
 
 ## Arquitetura
 
@@ -50,6 +51,7 @@ flowchart LR
 - Spring Security + JWT
 - PostgreSQL
 - Apache Kafka
+- Kafka KRaft
 - Prometheus + Grafana
 - React + Next.js
 - k6

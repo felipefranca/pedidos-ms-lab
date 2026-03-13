@@ -484,7 +484,7 @@ O que observar:
 - ordem implicita de inicializacao
 - `depends_on` com `condition: service_healthy`
 - bancos separados
-- Kafka e Zookeeper
+- Kafka em KRaft
 - frontend separado do backend
 - variaveis de ambiente
 - portas publicadas

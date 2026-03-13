@@ -47,6 +47,8 @@ Projetos principais:
 
 Pensamento importante: o monorepo junta os projetos, mas **nao mistura responsabilidades**.
 
+Observacao de mercado: neste projeto o Kafka esta configurado em **modo KRaft**, sem ZooKeeper, porque esse e o modelo mais alinhado com novos ambientes de producao.
+
 ---
 
 ## 3. Diagrama principal da arquitetura
