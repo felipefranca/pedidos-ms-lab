@@ -74,6 +74,8 @@ run_k6_smoke() {
   fi
 
   local mount_root="$REPO_ROOT"
+  local docker_target="/workspace/load-tests/k6/scripts/smoke.js"
+  local docker_base_url="$BASE_URL"
   case "$(uname -s)" in
     MINGW*|MSYS*|CYGWIN*)
       if command -v cygpath >/dev/null 2>&1; then
@@ -82,10 +84,21 @@ run_k6_smoke() {
       ;;
   esac
 
+  docker_base_url="${docker_base_url/http:\/\/localhost:/http:\/\/host.docker.internal:}"
+  docker_base_url="${docker_base_url/http:\/\/127.0.0.1:/http:\/\/host.docker.internal:}"
+
+  if [[ "${OSTYPE:-}" == msys* || "${OSTYPE:-}" == cygwin* || "$(uname -s)" =~ ^(MINGW|MSYS|CYGWIN) ]]; then
+    MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' docker run --rm \
+      -e BASE_URL="$docker_base_url" \
+      -v "${mount_root}:/workspace" \
+      grafana/k6 run "$docker_target"
+    return 0
+  fi
+
   docker run --rm \
-    -e BASE_URL="$BASE_URL" \
+    -e BASE_URL="$docker_base_url" \
     -v "${mount_root}:/workspace" \
-    grafana/k6 run /workspace/load-tests/k6/scripts/smoke.js
+    grafana/k6 run "$docker_target"
 }
 
 cd "$REPO_ROOT"

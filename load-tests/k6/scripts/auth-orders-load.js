@@ -35,7 +35,7 @@ function getSession() {
 export default function () {
   const session = getSession();
 
-  const createResponse = createOrder(session.token, `Load Order ${__VU}-${__ITER}`, 1 + (__ITER % 3));
+  const createResponse = createOrder(session.token, `Load Order ${__VU}-${__ITER}`, 99.9 + (__ITER % 3));
   check(createResponse, {
     'create order succeeded': (res) => [200, 201].includes(res.status),
   });

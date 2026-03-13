@@ -40,7 +40,7 @@ export function ensureAuthenticatedUser(prefix = 'k6-user') {
 
   check(loginResponse, {
     'login returned 200': (res) => res.status === 200,
-    'login has token': (res) => Boolean(res.json('token')),
+    'login has token': (res) => Boolean(res.json('accessToken')),
   });
 
   if (loginResponse.status !== 200) {
@@ -49,8 +49,8 @@ export function ensureAuthenticatedUser(prefix = 'k6-user') {
 
   return {
     email,
-    token: loginResponse.json('token'),
-    authType: loginResponse.json('type') || 'Bearer',
+    token: loginResponse.json('accessToken'),
+    authType: loginResponse.json('tokenType') || 'Bearer',
   };
 }
 
@@ -64,10 +64,10 @@ export function authHeaders(token) {
   };
 }
 
-export function createOrder(token, productName, quantity = 1) {
+export function createOrder(token, itemName, amount = 199.9) {
   return http.post(
     `${BASE_URL}${ORDERS_PATH}`,
-    JSON.stringify({ productName, quantity }),
+    JSON.stringify({ itemName, amount }),
     authHeaders(token),
   );
 }

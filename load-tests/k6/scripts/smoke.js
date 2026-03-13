@@ -14,7 +14,7 @@ export const options = {
 export default function () {
   const session = ensureAuthenticatedUser('k6-smoke');
 
-  const createResponse = createOrder(session.token, `Smoke Order ${__VU}-${__ITER}`, 1);
+  const createResponse = createOrder(session.token, `Smoke Order ${__VU}-${__ITER}`, 149.9);
   check(createResponse, {
     'create order status 200/201': (res) => [200, 201].includes(res.status),
     'create order has id': (res) => Boolean(res.json('id')),
