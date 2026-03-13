@@ -4,7 +4,7 @@ Este modulo adiciona ao monorepo uma base simples e pratica para teste de carga 
 
 Pasta:
 
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6`](C:\code_environment\workspace\pedidos-ms\load-tests\k6)
+- [`load-tests/k6`](load-tests/k6)
 
 ## Objetivo
 
@@ -18,10 +18,10 @@ A ideia aqui e estudar carga no mesmo fluxo que voce ja esta aprendendo funciona
 
 ## Estrutura
 
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\smoke.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\smoke.js)
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\auth-orders-load.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\scripts\auth-orders-load.js)
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\config.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\config.js)
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\helpers.js`](C:\code_environment\workspace\pedidos-ms\load-tests\k6\lib\helpers.js)
+- [`load-tests/k6/scripts/smoke.js`](load-tests/k6/scripts/smoke.js)
+- [`load-tests/k6/scripts/auth-orders-load.js`](load-tests/k6/scripts/auth-orders-load.js)
+- [`load-tests/k6/lib/config.js`](load-tests/k6/lib/config.js)
+- [`load-tests/k6/lib/helpers.js`](load-tests/k6/lib/helpers.js)
 
 ## Como funciona
 
@@ -67,32 +67,32 @@ Cada VU:
 ### Smoke test
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
-k6 run .\load-tests\k6\scripts\smoke.js
+cd <repo-root>
+k6 run ./load-tests/k6/scripts/smoke.js
 ```
 
 ### Carga gradual
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
-k6 run .\load-tests\k6\scripts\auth-orders-load.js
+cd <repo-root>
+k6 run ./load-tests/k6/scripts/auth-orders-load.js
 ```
 
 ### Exemplo com parametrizacao
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
+cd <repo-root>
 $env:BASE_URL='http://localhost:8080'
 $env:STAGE1_TARGET='10'
 $env:STAGE2_TARGET='25'
 $env:SLEEP_SECONDS='0.5'
-k6 run .\load-tests\k6\scripts\auth-orders-load.js
+k6 run ./load-tests/k6/scripts/auth-orders-load.js
 ```
 
 ## Rodar com Docker sem instalar k6
 
 ```powershell
-docker run --rm -i --network host -v "C:\code_environment\workspace\pedidos-ms:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/smoke.js
+docker run --rm -i --network host -v "<repo-root>:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/smoke.js
 ```
 
 Se `--network host` nao funcionar bem no seu Docker Desktop, use o gateway exposto no host mesmo e ajuste `BASE_URL` para `http://host.docker.internal:8080`.
@@ -100,7 +100,7 @@ Se `--network host` nao funcionar bem no seu Docker Desktop, use o gateway expos
 Exemplo:
 
 ```powershell
-docker run --rm -i -e BASE_URL=http://host.docker.internal:8080 -v "C:\code_environment\workspace\pedidos-ms:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/auth-orders-load.js
+docker run --rm -i -e BASE_URL=http://host.docker.internal:8080 -v "<repo-root>:/workspace" grafana/k6 run /workspace/load-tests/k6/scripts/auth-orders-load.js
 ```
 
 ## O que observar nos resultados
@@ -130,3 +130,7 @@ Esse projeto e voltado para estudo e baseline funcional. Para maturidade maior, 
 - tags e dashboards dedicados
 - execucao via CI performance job
 - testes com taxa constante e modelos mais proximos de producao
+
+
+
+

@@ -53,28 +53,28 @@ Pensamento importante: o monorepo junta os projetos, mas **nao mistura responsab
 
 ```mermaid
 flowchart LR
-    U[Usuario] --> W[Next.js Web]
-    W --> BFF[Rotas Next /api]
-    BFF --> G[API Gateway]
-    G --> A[Auth Service]
-    G --> O[Order Service]
-    A --> PA[(Postgres Auth)]
-    O --> PO[(Postgres Orders)]
-    O --> K[Kafka]
-    K --> N[Notification Service]
-    CS[Config Server] --> A
+    U["Usuario"] --> W["Next.js Web"]
+    W --> BFF["Rotas Next /api"]
+    BFF --> G["API Gateway"]
+    G --> A["Auth Service"]
+    G --> O["Order Service"]
+    A --> PA[("Postgres Auth")]
+    O --> PO[("Postgres Orders")]
+    O --> K["Kafka"]
+    K --> N["Notification Service"]
+    CS["Config Server"] --> A
     CS --> O
     CS --> G
     CS --> N
-    D[Eureka Discovery] --> A
+    D["Eureka Discovery"] --> A
     D --> O
     D --> G
     D --> N
-    P[Prometheus] --> A
+    P["Prometheus"] --> A
     P --> O
     P --> G
     P --> N
-    GR[Grafana] --> P
+    GR["Grafana"] --> P
 ```
 
 Leitura do desenho:
@@ -97,11 +97,11 @@ Use esta ordem. Ela segue Pareto: primeiro o que gera mais entendimento por unid
 
 Estude primeiro:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\api-gateway\src\main\resources\application.yml`](C:\code_environment\workspace\pedidos-ms\api-gateway\src\main\resources\application.yml)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java)
+- [`apps/web/app/login/page.tsx`](apps/web/app/login/page.tsx)
+- [`apps/web/app/api/auth/login/route.ts`](apps/web/app/api/auth/login/route.ts)
+- [`api-gateway/src/main/resources/application.yml`](api-gateway/src/main/resources/application.yml)
+- [`auth-service/src/main/java`](auth-service/src/main/java)
+- [`order-service/src/main/java`](order-service/src/main/java)
 
 Meta desta fase:
 
@@ -404,17 +404,17 @@ O que aprender:
 
 ## 9. Frontend Next.js: o que realmente importa aprender
 
-O frontend foi separado em [`C:\code_environment\workspace\pedidos-ms\apps\web`](C:\code_environment\workspace\pedidos-ms\apps\web), o que e uma pratica comum de mercado mesmo dentro de monorepo.
+O frontend foi separado em [`apps/web`](apps/web), o que e uma pratica comum de mercado mesmo dentro de monorepo.
 
 ### Arquitetura do frontend
 
 ```mermaid
 flowchart TD
-    UI[Paginas e componentes React] --> RH[Route Handlers do Next]
-    RH --> GW[API Gateway]
-    UI --> SP[Server Pages]
+    UI["Paginas e componentes React"] --> RH["Route Handlers do Next"]
+    RH --> GW["API Gateway"]
+    UI --> SP["Server Pages"]
     SP --> GW
-    GW --> MS[Microservicos Spring]
+    GW --> MS["Microservicos Spring"]
 ```
 
 ### Por que Next.js aqui?
@@ -436,13 +436,13 @@ Porque ele te permite juntar 3 papeis no mesmo projeto:
 
 ### Arquivos mais importantes para estudar
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\lib\backend.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\lib\backend.ts)
+- [`apps/web/app/page.tsx`](apps/web/app/page.tsx)
+- [`apps/web/app/login/page.tsx`](apps/web/app/login/page.tsx)
+- [`apps/web/app/dashboard/page.tsx`](apps/web/app/dashboard/page.tsx)
+- [`apps/web/app/api/auth/login/route.ts`](apps/web/app/api/auth/login/route.ts)
+- [`apps/web/app/api/orders/route.ts`](apps/web/app/api/orders/route.ts)
+- [`apps/web/components/dashboard-client.tsx`](apps/web/components/dashboard-client.tsx)
+- [`apps/web/lib/backend.ts`](apps/web/lib/backend.ts)
 
 ### Como pensar esse frontend
 
@@ -817,3 +817,8 @@ Se voce estudar nessa ordem, vai aprender com muito mais velocidade e muito meno
 Se eu resumisse tudo em uma frase, seria esta:
 
 **primeiro entenda o fluxo; depois entenda os blocos; por ultimo aprofunde a infraestrutura.**
+
+
+
+
+

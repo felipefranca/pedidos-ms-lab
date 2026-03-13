@@ -12,7 +12,7 @@ Regra de Pareto aplicada:
 
 Use este roteiro com o guia principal:
 
-- [`C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md`](C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md)
+- [`docs/GUIA_ESTUDO_COMPLETO.md`](docs/GUIA_ESTUDO_COMPLETO.md)
 
 ---
 
@@ -37,7 +37,7 @@ Objetivo: entender o que o sistema faz na pratica.
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\page.tsx)
+- [`apps/web/app/page.tsx`](apps/web/app/page.tsx)
 
 O que observar:
 
@@ -54,8 +54,8 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\auth-form.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\auth-form.tsx)
+- [`apps/web/app/login/page.tsx`](apps/web/app/login/page.tsx)
+- [`apps/web/components/auth-form.tsx`](apps/web/components/auth-form.tsx)
 
 O que observar:
 
@@ -72,8 +72,8 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\register\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\register\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\auth-form.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\auth-form.tsx)
+- [`apps/web/app/register/page.tsx`](apps/web/app/register/page.tsx)
+- [`apps/web/components/auth-form.tsx`](apps/web/components/auth-form.tsx)
 
 O que observar:
 
@@ -89,9 +89,9 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\logout-button.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\logout-button.tsx)
+- [`apps/web/app/dashboard/page.tsx`](apps/web/app/dashboard/page.tsx)
+- [`apps/web/components/dashboard-client.tsx`](apps/web/components/dashboard-client.tsx)
+- [`apps/web/components/logout-button.tsx`](apps/web/components/logout-button.tsx)
 
 O que observar:
 
@@ -116,7 +116,7 @@ Objetivo: entender como o frontend conversa com o backend sem expor demais a aut
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts)
+- [`apps/web/app/api/auth/login/route.ts`](apps/web/app/api/auth/login/route.ts)
 
 O que observar:
 
@@ -134,7 +134,7 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\register\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\register\route.ts)
+- [`apps/web/app/api/auth/register/route.ts`](apps/web/app/api/auth/register/route.ts)
 
 O que observar:
 
@@ -146,8 +146,8 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\me\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\me\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\logout\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\logout\route.ts)
+- [`apps/web/app/api/auth/me/route.ts`](apps/web/app/api/auth/me/route.ts)
+- [`apps/web/app/api/auth/logout/route.ts`](apps/web/app/api/auth/logout/route.ts)
 
 O que observar:
 
@@ -163,10 +163,10 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\[id]\status\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\orders\[id]\status\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\lib\backend.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\lib\backend.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\lib\types.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\lib\types.ts)
+- [`apps/web/app/api/orders/route.ts`](apps/web/app/api/orders/route.ts)
+- [`apps/web/app/api/orders/[id]/status/route.ts`](apps/web/app/api/orders/[id]/status/route.ts)
+- [`apps/web/lib/backend.ts`](apps/web/lib/backend.ts)
+- [`apps/web/lib/types.ts`](apps/web/lib/types.ts)
 
 O que observar:
 
@@ -190,7 +190,7 @@ Objetivo: aprender o caminho completo do login no Spring Boot.
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\AuthServiceApplication.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\AuthServiceApplication.java)
+- [`auth-service/src/main/java/com/playground/auth/AuthServiceApplication.java`](auth-service/src/main/java/com/playground/auth/AuthServiceApplication.java)
 
 O que observar:
 
@@ -201,7 +201,7 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\controller\AuthController.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\controller\AuthController.java)
+- [`auth-service/src/main/java/com/playground/auth/controller/AuthController.java`](auth-service/src/main/java/com/playground/auth/controller/AuthController.java)
 
 O que observar:
 
@@ -218,7 +218,7 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\service\AuthService.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\service\AuthService.java)
+- [`auth-service/src/main/java/com/playground/auth/service/AuthService.java`](auth-service/src/main/java/com/playground/auth/service/AuthService.java)
 
 O que observar:
 
@@ -236,8 +236,8 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\domain\AppUser.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\domain\AppUser.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\repository\UserRepository.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\repository\UserRepository.java)
+- [`auth-service/src/main/java/com/playground/auth/domain/AppUser.java`](auth-service/src/main/java/com/playground/auth/domain/AppUser.java)
+- [`auth-service/src/main/java/com/playground/auth/repository/UserRepository.java`](auth-service/src/main/java/com/playground/auth/repository/UserRepository.java)
 
 O que observar:
 
@@ -254,10 +254,10 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\LoginRequest.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\LoginRequest.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\RegisterRequest.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\RegisterRequest.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\AuthResponse.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\AuthResponse.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\UserProfileResponse.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\dto\UserProfileResponse.java)
+- [`auth-service/src/main/java/com/playground/auth/dto/LoginRequest.java`](auth-service/src/main/java/com/playground/auth/dto/LoginRequest.java)
+- [`auth-service/src/main/java/com/playground/auth/dto/RegisterRequest.java`](auth-service/src/main/java/com/playground/auth/dto/RegisterRequest.java)
+- [`auth-service/src/main/java/com/playground/auth/dto/AuthResponse.java`](auth-service/src/main/java/com/playground/auth/dto/AuthResponse.java)
+- [`auth-service/src/main/java/com/playground/auth/dto/UserProfileResponse.java`](auth-service/src/main/java/com/playground/auth/dto/UserProfileResponse.java)
 
 O que observar:
 
@@ -268,10 +268,10 @@ O que observar:
 
 Leia nesta ordem:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\config\SecurityConfig.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\config\SecurityConfig.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\JwtService.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\JwtService.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\JwtAuthenticationFilter.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\JwtAuthenticationFilter.java)
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\CustomUserDetailsService.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\security\CustomUserDetailsService.java)
+- [`auth-service/src/main/java/com/playground/auth/config/SecurityConfig.java`](auth-service/src/main/java/com/playground/auth/config/SecurityConfig.java)
+- [`auth-service/src/main/java/com/playground/auth/security/JwtService.java`](auth-service/src/main/java/com/playground/auth/security/JwtService.java)
+- [`auth-service/src/main/java/com/playground/auth/security/JwtAuthenticationFilter.java`](auth-service/src/main/java/com/playground/auth/security/JwtAuthenticationFilter.java)
+- [`auth-service/src/main/java/com/playground/auth/security/CustomUserDetailsService.java`](auth-service/src/main/java/com/playground/auth/security/CustomUserDetailsService.java)
 
 O que observar:
 
@@ -290,7 +290,7 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\config\openapi\OpenApiConfig.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\config\openapi\OpenApiConfig.java)
+- [`auth-service/src/main/java/com/playground/auth/config/openapi/OpenApiConfig.java`](auth-service/src/main/java/com/playground/auth/config/openapi/OpenApiConfig.java)
 
 O que aprender:
 
@@ -307,13 +307,13 @@ Objetivo: aprender dominio, persistencia e eventos.
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\OrderServiceApplication.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\OrderServiceApplication.java)
+- [`order-service/src/main/java/com/playground/orders/OrderServiceApplication.java`](order-service/src/main/java/com/playground/orders/OrderServiceApplication.java)
 
 ### 5.2 Controller de pedidos
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\controller\OrderController.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\controller\OrderController.java)
+- [`order-service/src/main/java/com/playground/orders/controller/OrderController.java`](order-service/src/main/java/com/playground/orders/controller/OrderController.java)
 
 O que observar:
 
@@ -324,7 +324,7 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\service\OrderService.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\service\OrderService.java)
+- [`order-service/src/main/java/com/playground/orders/service/OrderService.java`](order-service/src/main/java/com/playground/orders/service/OrderService.java)
 
 O que observar:
 
@@ -341,9 +341,9 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\Order.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\Order.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\OrderStatus.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\OrderStatus.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\repository\OrderRepository.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\repository\OrderRepository.java)
+- [`order-service/src/main/java/com/playground/orders/domain/Order.java`](order-service/src/main/java/com/playground/orders/domain/Order.java)
+- [`order-service/src/main/java/com/playground/orders/domain/OrderStatus.java`](order-service/src/main/java/com/playground/orders/domain/OrderStatus.java)
+- [`order-service/src/main/java/com/playground/orders/repository/OrderRepository.java`](order-service/src/main/java/com/playground/orders/repository/OrderRepository.java)
 
 O que observar:
 
@@ -355,9 +355,9 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\CreateOrderRequest.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\CreateOrderRequest.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\OrderResponse.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\OrderResponse.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\UpdateOrderStatusRequest.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\UpdateOrderStatusRequest.java)
+- [`order-service/src/main/java/com/playground/orders/dto/CreateOrderRequest.java`](order-service/src/main/java/com/playground/orders/dto/CreateOrderRequest.java)
+- [`order-service/src/main/java/com/playground/orders/dto/OrderResponse.java`](order-service/src/main/java/com/playground/orders/dto/OrderResponse.java)
+- [`order-service/src/main/java/com/playground/orders/dto/UpdateOrderStatusRequest.java`](order-service/src/main/java/com/playground/orders/dto/UpdateOrderStatusRequest.java)
 
 O que aprender:
 
@@ -367,9 +367,9 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\config\SecurityConfig.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\config\SecurityConfig.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\security\JwtAuthenticationFilter.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\security\JwtAuthenticationFilter.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\security\AuthenticatedUserProvider.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\security\AuthenticatedUserProvider.java)
+- [`order-service/src/main/java/com/playground/orders/config/SecurityConfig.java`](order-service/src/main/java/com/playground/orders/config/SecurityConfig.java)
+- [`order-service/src/main/java/com/playground/orders/security/JwtAuthenticationFilter.java`](order-service/src/main/java/com/playground/orders/security/JwtAuthenticationFilter.java)
+- [`order-service/src/main/java/com/playground/orders/security/AuthenticatedUserProvider.java`](order-service/src/main/java/com/playground/orders/security/AuthenticatedUserProvider.java)
 
 O que observar:
 
@@ -380,8 +380,8 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEvent.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEvent.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEventPublisher.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEventPublisher.java)
+- [`order-service/src/main/java/com/playground/orders/event/OrderEvent.java`](order-service/src/main/java/com/playground/orders/event/OrderEvent.java)
+- [`order-service/src/main/java/com/playground/orders/event/OrderEventPublisher.java`](order-service/src/main/java/com/playground/orders/event/OrderEventPublisher.java)
 
 O que observar:
 
@@ -392,7 +392,7 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\config\openapi\OpenApiConfig.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\config\openapi\OpenApiConfig.java)
+- [`order-service/src/main/java/com/playground/orders/config/openapi/OpenApiConfig.java`](order-service/src/main/java/com/playground/orders/config/openapi/OpenApiConfig.java)
 
 ---
 
@@ -402,11 +402,11 @@ Objetivo: ver o outro lado do evento.
 
 Leia nesta ordem:
 
-- [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\NotificationServiceApplication.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\NotificationServiceApplication.java)
-- [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\config\KafkaConsumerConfig.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\config\KafkaConsumerConfig.java)
-- [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\event\OrderEvent.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\event\OrderEvent.java)
-- [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\consumer\OrderEventConsumer.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\consumer\OrderEventConsumer.java)
-- [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\service\NotificationService.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\service\NotificationService.java)
+- [`notification-service/src/main/java/com/playground/notification/NotificationServiceApplication.java`](notification-service/src/main/java/com/playground/notification/NotificationServiceApplication.java)
+- [`notification-service/src/main/java/com/playground/notification/config/KafkaConsumerConfig.java`](notification-service/src/main/java/com/playground/notification/config/KafkaConsumerConfig.java)
+- [`notification-service/src/main/java/com/playground/notification/event/OrderEvent.java`](notification-service/src/main/java/com/playground/notification/event/OrderEvent.java)
+- [`notification-service/src/main/java/com/playground/notification/consumer/OrderEventConsumer.java`](notification-service/src/main/java/com/playground/notification/consumer/OrderEventConsumer.java)
+- [`notification-service/src/main/java/com/playground/notification/service/NotificationService.java`](notification-service/src/main/java/com/playground/notification/service/NotificationService.java)
 
 O que observar:
 
@@ -429,8 +429,8 @@ Objetivo: entender por que os microservicos conseguem operar juntos.
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\api-gateway\src\main\java\com\playground\gateway\ApiGatewayApplication.java`](C:\code_environment\workspace\pedidos-ms\api-gateway\src\main\java\com\playground\gateway\ApiGatewayApplication.java)
-- [`C:\code_environment\workspace\pedidos-ms\config-repo\api-gateway.yml`](C:\code_environment\workspace\pedidos-ms\config-repo\api-gateway.yml)
+- [`api-gateway/src/main/java/com/playground/gateway/ApiGatewayApplication.java`](api-gateway/src/main/java/com/playground/gateway/ApiGatewayApplication.java)
+- [`config-repo/api-gateway.yml`](config-repo/api-gateway.yml)
 
 O que observar:
 
@@ -442,7 +442,7 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\discovery-server\src\main\java\com\playground\discovery\DiscoveryServerApplication.java`](C:\code_environment\workspace\pedidos-ms\discovery-server\src\main\java\com\playground\discovery\DiscoveryServerApplication.java)
+- [`discovery-server/src/main/java/com/playground/discovery/DiscoveryServerApplication.java`](discovery-server/src/main/java/com/playground/discovery/DiscoveryServerApplication.java)
 
 O que aprender:
 
@@ -453,10 +453,10 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\config-server\src\main\java\com\playground\configserver\ConfigServerApplication.java`](C:\code_environment\workspace\pedidos-ms\config-server\src\main\java\com\playground\configserver\ConfigServerApplication.java)
-- [`C:\code_environment\workspace\pedidos-ms\config-repo\auth-service.yml`](C:\code_environment\workspace\pedidos-ms\config-repo\auth-service.yml)
-- [`C:\code_environment\workspace\pedidos-ms\config-repo\order-service.yml`](C:\code_environment\workspace\pedidos-ms\config-repo\order-service.yml)
-- [`C:\code_environment\workspace\pedidos-ms\config-repo\notification-service.yml`](C:\code_environment\workspace\pedidos-ms\config-repo\notification-service.yml)
+- [`config-server/src/main/java/com/playground/configserver/ConfigServerApplication.java`](config-server/src/main/java/com/playground/configserver/ConfigServerApplication.java)
+- [`config-repo/auth-service.yml`](config-repo/auth-service.yml)
+- [`config-repo/order-service.yml`](config-repo/order-service.yml)
+- [`config-repo/notification-service.yml`](config-repo/notification-service.yml)
 
 O que observar:
 
@@ -477,7 +477,7 @@ Objetivo: aprender operacao e ambiente.
 
 Leia primeiro:
 
-- [`C:\code_environment\workspace\pedidos-ms\docker-compose.yml`](C:\code_environment\workspace\pedidos-ms\docker-compose.yml)
+- [`docker-compose.yml`](docker-compose.yml)
 
 O que observar:
 
@@ -497,7 +497,7 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\scripts\up-and-test.ps1`](C:\code_environment\workspace\pedidos-ms\scripts\up-and-test.ps1)
+- [`scripts/up-and-test.ps1`](scripts/up-and-test.ps1)
 
 O que observar:
 
@@ -517,7 +517,7 @@ O que aprender:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\prometheus.yml`](C:\code_environment\workspace\pedidos-ms\monitoring\prometheus.yml)
+- [`monitoring/prometheus.yml`](monitoring/prometheus.yml)
 
 O que observar:
 
@@ -529,9 +529,9 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\datasources\datasource.yml`](C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\datasources\datasource.yml)
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\dashboard.yml`](C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\dashboard.yml)
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\json\pedidos-ms-dashboard.json`](C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\json\pedidos-ms-dashboard.json)
+- [`monitoring/grafana/provisioning/datasources/datasource.yml`](monitoring/grafana/provisioning/datasources/datasource.yml)
+- [`monitoring/grafana/provisioning/dashboards/dashboard.yml`](monitoring/grafana/provisioning/dashboards/dashboard.yml)
+- [`monitoring/grafana/provisioning/dashboards/json/pedidos-ms-dashboard.json`](monitoring/grafana/provisioning/dashboards/json/pedidos-ms-dashboard.json)
 
 O que observar:
 
@@ -543,7 +543,7 @@ O que observar:
 
 Leia:
 
-- [`C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml`](C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml)
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 O que observar:
 
@@ -562,16 +562,16 @@ O que aprender:
 
 Se voce tiver pouco tempo, leia nesta ordem:
 
-1. [`C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\login\page.tsx)
-2. [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\login\route.ts)
-3. [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\controller\AuthController.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\controller\AuthController.java)
-4. [`C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\service\AuthService.java`](C:\code_environment\workspace\pedidos-ms\auth-service\src\main\java\com\playground\auth\service\AuthService.java)
-5. [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\controller\OrderController.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\controller\OrderController.java)
-6. [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\service\OrderService.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\service\OrderService.java)
-7. [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEventPublisher.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\event\OrderEventPublisher.java)
-8. [`C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\consumer\OrderEventConsumer.java`](C:\code_environment\workspace\pedidos-ms\notification-service\src\main\java\com\playground\notification\consumer\OrderEventConsumer.java)
-9. [`C:\code_environment\workspace\pedidos-ms\config-repo\api-gateway.yml`](C:\code_environment\workspace\pedidos-ms\config-repo\api-gateway.yml)
-10. [`C:\code_environment\workspace\pedidos-ms\docker-compose.yml`](C:\code_environment\workspace\pedidos-ms\docker-compose.yml)
+1. [`apps/web/app/login/page.tsx`](apps/web/app/login/page.tsx)
+2. [`apps/web/app/api/auth/login/route.ts`](apps/web/app/api/auth/login/route.ts)
+3. [`auth-service/src/main/java/com/playground/auth/controller/AuthController.java`](auth-service/src/main/java/com/playground/auth/controller/AuthController.java)
+4. [`auth-service/src/main/java/com/playground/auth/service/AuthService.java`](auth-service/src/main/java/com/playground/auth/service/AuthService.java)
+5. [`order-service/src/main/java/com/playground/orders/controller/OrderController.java`](order-service/src/main/java/com/playground/orders/controller/OrderController.java)
+6. [`order-service/src/main/java/com/playground/orders/service/OrderService.java`](order-service/src/main/java/com/playground/orders/service/OrderService.java)
+7. [`order-service/src/main/java/com/playground/orders/event/OrderEventPublisher.java`](order-service/src/main/java/com/playground/orders/event/OrderEventPublisher.java)
+8. [`notification-service/src/main/java/com/playground/notification/consumer/OrderEventConsumer.java`](notification-service/src/main/java/com/playground/notification/consumer/OrderEventConsumer.java)
+9. [`config-repo/api-gateway.yml`](config-repo/api-gateway.yml)
+10. [`docker-compose.yml`](docker-compose.yml)
 
 Essa sequencia te entrega uma visao muito forte do projeto inteiro.
 
@@ -630,3 +630,7 @@ Depois de ler tudo, tente fazer sozinho sem olhar o codigo:
 6. explicar como o token chega do login ate a criacao do pedido
 
 Se voce conseguir fazer isso, seu entendimento ja esta muito acima do superficial.
+
+
+
+

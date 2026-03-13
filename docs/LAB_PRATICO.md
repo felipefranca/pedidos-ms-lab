@@ -27,8 +27,8 @@ Para cada exercicio, siga este ciclo:
 
 Se travar, volte para estes arquivos de apoio:
 
-- [`C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md`](C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md)
-- [`C:\code_environment\workspace\pedidos-ms\docs\ROTEIRO_LEITURA_POR_ARQUIVO.md`](C:\code_environment\workspace\pedidos-ms\docs\ROTEIRO_LEITURA_POR_ARQUIVO.md)
+- [`docs/GUIA_ESTUDO_COMPLETO.md`](docs/GUIA_ESTUDO_COMPLETO.md)
+- [`docs/ROTEIRO_LEITURA_POR_ARQUIVO.md`](docs/ROTEIRO_LEITURA_POR_ARQUIVO.md)
 
 ---
 
@@ -66,7 +66,7 @@ Tarefa:
 Comandos:
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
+cd <repo-root>
 docker compose up --build -d
 ```
 
@@ -117,11 +117,11 @@ Voce deve alterar:
 
 Arquivos para abrir primeiro:
 
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\Order.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\domain\Order.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\CreateOrderRequest.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\CreateOrderRequest.java)
-- [`C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\OrderResponse.java`](C:\code_environment\workspace\pedidos-ms\order-service\src\main\java\com\playground\orders\dto\OrderResponse.java)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\lib\types.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\lib\types.ts)
+- [`order-service/src/main/java/com/playground/orders/domain/Order.java`](order-service/src/main/java/com/playground/orders/domain/Order.java)
+- [`order-service/src/main/java/com/playground/orders/dto/CreateOrderRequest.java`](order-service/src/main/java/com/playground/orders/dto/CreateOrderRequest.java)
+- [`order-service/src/main/java/com/playground/orders/dto/OrderResponse.java`](order-service/src/main/java/com/playground/orders/dto/OrderResponse.java)
+- [`apps/web/components/dashboard-client.tsx`](apps/web/components/dashboard-client.tsx)
+- [`apps/web/lib/types.ts`](apps/web/lib/types.ts)
 
 O que isso ensina:
 
@@ -178,9 +178,9 @@ Mostre nome, email ou identificador do usuario no dashboard.
 
 Arquivos mais provaveis:
 
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\app\dashboard\page.tsx)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\me\route.ts`](C:\code_environment\workspace\pedidos-ms\apps\web\app\api\auth\me\route.ts)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx`](C:\code_environment\workspace\pedidos-ms\apps\web\components\dashboard-client.tsx)
+- [`apps/web/app/dashboard/page.tsx`](apps/web/app/dashboard/page.tsx)
+- [`apps/web/app/api/auth/me/route.ts`](apps/web/app/api/auth/me/route.ts)
+- [`apps/web/components/dashboard-client.tsx`](apps/web/components/dashboard-client.tsx)
 
 O que isso ensina:
 
@@ -378,9 +378,9 @@ Explique:
 
 Arquivos:
 
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\prometheus.yml`](C:\code_environment\workspace\pedidos-ms\monitoring\prometheus.yml)
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\datasources\datasource.yml`](C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\datasources\datasource.yml)
-- [`C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\json\pedidos-ms-dashboard.json`](C:\code_environment\workspace\pedidos-ms\monitoring\grafana\provisioning\dashboards\json\pedidos-ms-dashboard.json)
+- [`monitoring/prometheus.yml`](monitoring/prometheus.yml)
+- [`monitoring/grafana/provisioning/datasources/datasource.yml`](monitoring/grafana/provisioning/datasources/datasource.yml)
+- [`monitoring/grafana/provisioning/dashboards/json/pedidos-ms-dashboard.json`](monitoring/grafana/provisioning/dashboards/json/pedidos-ms-dashboard.json)
 
 O que isso ensina:
 
@@ -392,7 +392,7 @@ Tarefa:
 
 Leia e explique o pipeline em:
 
-- [`C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml`](C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml)
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 O que isso ensina:
 
@@ -492,3 +492,7 @@ Faça assim:
 5. so depois passe para o proximo
 
 Aprender arquitetura e engenharia e muito mais sobre sequencia boa do que sobre pressa.
+
+
+
+

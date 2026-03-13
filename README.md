@@ -20,24 +20,24 @@ Este monorepo implementa um sistema de pedidos com autenticacao e arquitetura de
 
 ```mermaid
 flowchart LR
-    U[Usuario] --> W[Next.js Web]
-    W --> G[API Gateway]
-    G --> A[Auth Service]
-    G --> O[Order Service]
-    O --> K[Kafka]
-    K --> N[Notification Service]
-    A --> PA[(Postgres Auth)]
-    O --> PO[(Postgres Orders)]
-    C[Config Server] --> A
+    U["Usuario"] --> W["Next.js Web"]
+    W --> G["API Gateway"]
+    G --> A["Auth Service"]
+    G --> O["Order Service"]
+    O --> K["Kafka"]
+    K --> N["Notification Service"]
+    A --> PA[("Postgres Auth")]
+    O --> PO[("Postgres Orders")]
+    C["Config Server"] --> A
     C --> O
     C --> G
-    D[Discovery Server] --> A
+    D["Discovery Server"] --> A
     D --> O
     D --> G
-    P[Prometheus] --> A
+    P["Prometheus"] --> A
     P --> O
     P --> G
-    GR[Grafana] --> P
+    GR["Grafana"] --> P
 ```
 
 ## Stack
@@ -58,22 +58,22 @@ flowchart LR
 
 ## Estrutura do Monorepo
 
-- [`C:\code_environment\workspace\pedidos-ms\auth-service`](C:\code_environment\workspace\pedidos-ms\auth-service)
-- [`C:\code_environment\workspace\pedidos-ms\order-service`](C:\code_environment\workspace\pedidos-ms\order-service)
-- [`C:\code_environment\workspace\pedidos-ms\notification-service`](C:\code_environment\workspace\pedidos-ms\notification-service)
-- [`C:\code_environment\workspace\pedidos-ms\api-gateway`](C:\code_environment\workspace\pedidos-ms\api-gateway)
-- [`C:\code_environment\workspace\pedidos-ms\config-server`](C:\code_environment\workspace\pedidos-ms\config-server)
-- [`C:\code_environment\workspace\pedidos-ms\discovery-server`](C:\code_environment\workspace\pedidos-ms\discovery-server)
-- [`C:\code_environment\workspace\pedidos-ms\apps\web`](C:\code_environment\workspace\pedidos-ms\apps\web)
-- [`C:\code_environment\workspace\pedidos-ms\load-tests\k6`](C:\code_environment\workspace\pedidos-ms\load-tests\k6)
-- [`C:\code_environment\workspace\pedidos-ms\docs`](C:\code_environment\workspace\pedidos-ms\docs)
+- [`auth-service`](auth-service)
+- [`order-service`](order-service)
+- [`notification-service`](notification-service)
+- [`api-gateway`](api-gateway)
+- [`config-server`](config-server)
+- [`discovery-server`](discovery-server)
+- [`apps/web`](apps/web)
+- [`load-tests/k6`](load-tests/k6)
+- [`docs`](docs)
 
 ## Como Rodar
 
 ### Subir tudo com Docker
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
+cd <repo-root>
 docker compose up --build -d
 ```
 
@@ -94,36 +94,36 @@ docker compose up --build -d
 ### Backend
 
 ```powershell
-cd C:\code_environment\workspace\pedidos-ms
+cd <repo-root>
 mvn test
 ```
 
 ### Smoke test automatizado
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\up-and-test.ps1 -Rebuild -KeepRunning
+powershell -ExecutionPolicy Bypass -File ./scripts/up-and-test.ps1 -Rebuild -KeepRunning
 ```
 
 ### Teste de carga com k6
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\run-k6.ps1 -Scenario smoke
-powershell -ExecutionPolicy Bypass -File .\scripts\run-k6.ps1 -Scenario load
+powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario smoke
+powershell -ExecutionPolicy Bypass -File ./scripts/run-k6.ps1 -Scenario load
 ```
 
 ## Guia de Estudo
 
 Se sua intencao e estudar e aprender a implementacao com profundidade, comece por estes arquivos:
 
-- [`C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md`](C:\code_environment\workspace\pedidos-ms\docs\GUIA_ESTUDO_COMPLETO.md)
-- [`C:\code_environment\workspace\pedidos-ms\docs\ROTEIRO_LEITURA_POR_ARQUIVO.md`](C:\code_environment\workspace\pedidos-ms\docs\ROTEIRO_LEITURA_POR_ARQUIVO.md)
-- [`C:\code_environment\workspace\pedidos-ms\docs\LAB_PRATICO.md`](C:\code_environment\workspace\pedidos-ms\docs\LAB_PRATICO.md)
+- [`docs/GUIA_ESTUDO_COMPLETO.md`](docs/GUIA_ESTUDO_COMPLETO.md)
+- [`docs/ROTEIRO_LEITURA_POR_ARQUIVO.md`](docs/ROTEIRO_LEITURA_POR_ARQUIVO.md)
+- [`docs/LAB_PRATICO.md`](docs/LAB_PRATICO.md)
 
 ## CI
 
 A pipeline esta em:
 
-- [`C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml`](C:\code_environment\workspace\pedidos-ms\.github\workflows\ci.yml)
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 ## Objetivo do Projeto
 
@@ -141,3 +141,8 @@ Este projeto foi organizado como um laboratorio completo para estudar:
 ## Licenca
 
 Uso educacional e de estudo.
+
+
+
+
+
